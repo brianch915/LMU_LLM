@@ -19,5 +19,3 @@ def get_transcript(url):
         return transcript
     except Exception as e:
         return str(e)
-
-# API key : AIzaSyCXUpzg0gVYKDiBjhTIIRZDpBmz2afen1E
