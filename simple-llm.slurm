@@ -3,11 +3,12 @@
 #SBATCH --output=simple-llm_%j.out
 #SBATCH --error=simple-llm_%j.err
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=4
+#SBATCH --cpus-per-task=8
 #SBATCH --time=02:00:00
-#SBATCH --mem=16G
-#SBATCH --partition=lrz-cpu
-#SBATCH --qos=cpu
+#SBATCH --mem=64G
+#SBATCH --partition=test-v100x2
+#SBATCH --gres=gpu:1
+#SBATCH --qos=test
 
 source ~/LMU_LLM/venv/bin/activate
 
