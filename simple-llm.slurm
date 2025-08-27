@@ -8,7 +8,7 @@
 #SBATCH --mem=64G
 #SBATCH --partition=test-v100x2
 #SBATCH --gres=gpu:1
-#SBATCH --qos=test
+#SBATCH --qos=testing
 
 source ~/LMU_LLM/venv/bin/activate
 
