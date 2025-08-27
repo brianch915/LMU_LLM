@@ -18,38 +18,25 @@ local_dir = "/dss/dssmcmlfs01/pn25ju/pn25ju-dss-0000/models/Llama-3.1-8B"
 model = AutoModelForCausalLM.from_pretrained(local_dir, torch_dtype="auto", device_map="auto")
 tokenizer = AutoTokenizer.from_pretrained(local_dir)
 
-
 # Create the pipeline
 generator = pipeline(
     "text-generation",
     model=model,
     tokenizer=tokenizer,
+    device=-1, # force CPU
 )
 
 # create the prompt TODO
 prompt = f"""generate the answer of 1 + 1 please"""
 
-# add the prompt to the dialogue
-messages = [
-    {"role": "user", "content": prompt},
-]
-
-
-terminators = [
-    generator.tokenizer.eos_token_id,
-    generator.tokenizer.convert_tokens_to_ids("<|eot_id|>")
-]
 # run the model with the messages
 outputs = generator(
-        messages,
+        prompt,
         max_new_tokens=256, # TODO
-        eos_token_id=terminators,
         do_sample=False, # TODO
-        temperature=None, # TODO
-        top_p=None, # TODO
 )
+
 # read the response
-response=outputs[0]["generated_text"][-1]['content']
+response=outputs[0]["generated_text"]
 print("Input: ", prompt)
 print("Output: ", response)
-print("")
