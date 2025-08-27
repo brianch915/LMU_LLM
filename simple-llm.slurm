@@ -7,6 +7,7 @@
 #SBATCH --time=02:00:00
 #SBATCH --mem=16G
 #SBATCH --partition=lrz-cpu
+#SBATCH --qos=cpu
 
 source ~/LMU_LLM/venv/bin/activate
 
