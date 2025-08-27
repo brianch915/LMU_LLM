@@ -15,7 +15,7 @@ local_dir = "/dss/dssmcmlfs01/pn25ju/pn25ju-dss-0000/models/Llama-3.1-8B"
 # ...
 
 # load the models from the local_dir
-model = AutoModelForCausalLM.from_pretrained(local_dir, torch_dtype=torch.float32)
+model = AutoModelForCausalLM.from_pretrained(local_dir, device_map="auto", torch_dtype="auto")
 
 # Create the pipeline
 generator = pipeline(
